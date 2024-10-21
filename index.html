@@ -1,0 +1,113 @@
+<!DOCTYPE html> 
+<html lang="ru"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Frontend Task №6</title>
+    <style>
+    *{ 
+        padding: 0; 
+        margin: 0; 
+        box-sizing: border-box; 
+    } 
+    
+    body { 
+        font-family: Arial, sans-serif; 
+        margin: 0; 
+        padding: 0; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+    } 
+    
+    .control-panel{ 
+        display: flex; 
+    } 
+    
+    button { 
+        padding: 10px 0; 
+        font-size: large; 
+        flex: 1; 
+        text-align: center; 
+        background-color: red; 
+        color: white; 
+        cursor: pointer; 
+    } 
+    
+    .main-container { 
+        width: 50%;
+    } 
+    
+    .content-area{ 
+        height: 500px; 
+        display: flex; 
+        flex-direction: row;
+    }
+    
+    .blue{ 
+        width: 100%; 
+        background-color: blue; 
+    } 
+    
+    .green{ 
+        width: 30px; 
+        background-color: green; 
+    } 
+    
+    img{ 
+        max-width: 100%;
+        max-height: 100%;
+        display: none;
+        object-fit: fill;
+    }
+    img.active {
+        display: block;
+    }
+    </style>
+</head> 
+<body> 
+    <div class="main-container"> 
+        <div class="control-panel"> 
+            <button onclick="left()">Левая колонка</button> 
+            <button onclick="both()">Обе две</button> 
+            <button onclick="right()">Правая колонка</button> 
+        </div> 
+        <div class="content-area"> 
+            <div class="content-item blue" > 
+                <img src="cat.jpg" alt="cat" class="active" id="cat_img"> 
+            </div> 
+            <div class="content-item green" > 
+                <img src="dog.jpg" alt="dog" id="dog_img"> 
+            </div> 
+        </div> 
+    </div> 
+ 
+    <script>
+        const blueColumn = document.querySelector('.blue');
+        const greenColumn = document.querySelector('.green');
+        const catImg = document.getElementById('cat_img');
+        const dogImg = document.getElementById('dog_img');
+        
+        function left() {
+            blueColumn.style.width = '100%';
+            greenColumn.style.width = '30px';
+            catImg.classList.add('active')
+            dogImg.classList.remove('active')
+        }
+
+        function right() {
+            blueColumn.style.width = '30px';
+            greenColumn.style.width = '100%';
+            catImg.classList.remove('active')
+            dogImg.classList.add('active')
+        }
+
+        function both() {
+            blueColumn.style.width = '50%';
+            greenColumn.style.width = '50%';
+            catImg.classList.add('active')
+            dogImg.classList.add('active')
+        }
+    </script> 
+</body> 
+</html>
